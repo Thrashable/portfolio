@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f6e56">
+<title>Kellen Poole — Builder Portfolio</title>
+<meta name="description" content="Practical, AI-assisted software: a front-end tool, a real API integration, a full-stack dashboard, a desktop audio app, and an automation engine. Live demos, honest status.">
+<meta property="og:title" content="Kellen Poole — Builder Portfolio">
+<meta property="og:description" content="Live demos of 6 projects: front-end, integration, full-stack, desktop, automation, and an agentic pipeline.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root{
+    --bg:#f6f7f8; --surface:#ffffff; --surface2:#f1f3f4; --line:#e3e6e8;
+    --text:#15201c; --muted:#5f6b66; --accent:#0f6e56; --info:#185fa5;
+    --ok:#067647; --warn:#9a5b08;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#11140f; --surface:#1b1f1a; --surface2:#23271f; --line:#333a30;
+      --text:#eef1ea; --muted:#a6b0a4; --accent:#5dcaa5; --info:#85b7eb; --ok:#5dcaa5; --warn:#e2b15f; }
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
+  .wrap{max-width:760px;margin:0 auto;padding:34px 18px 60px}
+  header .eyebrow{color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.09em;text-transform:uppercase;margin:0 0 8px}
+  h1{font-size:30px;font-weight:700;margin:0;letter-spacing:-.02em}
+  .head-sub{color:var(--muted);font-size:15.5px;margin:10px 0 0;max-width:62ch}
+  .contact{margin:14px 0 0;font-size:13px}
+  .contact a{color:var(--accent);text-decoration:none;font-weight:600}
+  h2.section{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:34px 0 8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:15px;padding:18px 19px;margin:13px 0}
+  .card-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+  .pname{font-weight:700;font-size:18px;margin:0;letter-spacing:-.01em}
+  .pnum{color:var(--muted);font-weight:600}
+  .badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:7px;white-space:nowrap}
+  .b-live{background:#e9f7ef;color:#067647}
+  .b-part{background:#fff6e6;color:#9a5b08}
+  .b-desk{background:#e8f0fb;color:#185fa5}
+  @media (prefers-color-scheme: dark){.b-live{background:#10301f;color:#5dcaa5}.b-part{background:#3a2e12;color:#e2b15f}.b-desk{background:#16263a;color:#85b7eb}}
+  .prop{font-size:14px;margin:8px 0 0}
+  .skill{font-size:12px;color:var(--muted);margin:8px 0 0}
+  .skill b{color:var(--text)}
+  .btns{margin:13px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:13.5px;font-weight:600;border-radius:9px;padding:9px 15px}
+  .btn-primary{background:var(--accent);color:#fff}
+  .btn-ghost{background:var(--surface2);color:var(--text);border:1px solid var(--line)}
+  details{margin:12px 0 0;border-top:1px solid var(--line);padding-top:10px}
+  summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--accent);list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"▸ ";color:var(--muted)}
+  details[open] summary::before{content:"▾ "}
+  .cs{font-size:13px;color:var(--text);margin:10px 0 0}
+  .cs p{margin:6px 0}
+  .cs b{color:var(--text)}
+  .cs .muted{color:var(--muted)}
+  .pill{display:inline-block;font-size:11px;background:var(--surface2);color:var(--muted);border-radius:6px;padding:2px 8px;margin:3px 4px 0 0;border:1px solid var(--line)}
+  .note{font-size:12.5px;color:var(--muted)}
+  .foot{color:var(--muted);font-size:12px;margin-top:36px;text-align:center;line-height:1.7}
+  .disclaimer{background:var(--surface2);border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:12.5px;color:var(--muted);margin:18px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Portfolio · live demos</p>
+    <h1>Kellen Poole</h1>
+    <p class="head-sub">I build practical, AI-assisted software end to end — a polished front-end tool, a real API integration, a full-stack dashboard, a Windows desktop app, and an automation engine. Each project below has a live demo or a tested build, and an honest status.</p>
+    <p class="contact">📧 <a href="mailto:kuttochannel@gmail.com">kuttochannel@gmail.com</a></p>
+    <div class="disclaimer">Every demo uses <b>fictional sample data</b> — no real personal information. Projects are self-directed, built with AI-assisted development (Codex/Claude). Status labels (live / read-only preview / desktop) are accurate, not aspirational.</div>
+  </header>
+
+  <h2 class="section">Six projects, six different skills</h2>
+
+  <!-- 1 Resume Shock -->
+  <div class="card">
+    <div class="card-top">
+      <p class="pname"><span class="pnum">1 · </span>Resume Shock</p>
+      <span class="badge b-live">Live demo</span>
+    </div>
+    <p class="prop">Turn a PDF résumé into a clean, shareable web résumé — parsed entirely in your browser, nothing uploaded.</p>
+    <p class="skill">Proves: <b>polished front-end + client-side processing + privacy-by-design</b></p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://resume-shock-demo-kp.netlify.app" target="_blank" rel="noopener">Live Demo →</a>
+    </div>
+    <details><summary>Case study</summary><div class="cs">
+      <p><b>Problem.</b> A PDF résumé is hard to share nicely, and résumé-site tools want an account and an upload.</p>
+      <p><b>What I built.</b> In-browser PDF.js parsing → a themed visual résumé → a share link with the data compressed into the URL hash (no backend). I code-split the 2 MB PDF engine to cut the initial bundle ~54% (gzip 254→118 KB) and hardened the share action with a clipboard fallback.</p>
+      <p><b>Try it:</b> click <b>See Example</b> (fictional "Jane Smith") → Share Link.</p>
+      <p class="muted">React · Vite · PDF.js · lz-string · Tailwind</p>
+    </div></details>
+  </div>
+
+  <!-- 2 DrainCheck -->
+  <div class="card">
+    <div class="card-top">
+      <p class="pname"><span class="pnum">2 · </span>DrainCheck</p>
+      <span class="badge b-live">Live demo</span>
+    </div>
+    <p class="prop">A privacy-first app that uses read-only Gmail access to find recurring subscriptions and total monthly spend — with a no-login demo.</p>
+    <p class="skill">Proves: <b>real API integration (OAuth) + serverless + privacy</b></p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://draincheck-demo-kp.netlify.app/?demo=1" target="_blank" rel="noopener">Live Demo →</a>
+    </div>
+    <details><summary>Case study</summary><div class="cs">
+      <p><b>Problem.</b> Forgotten subscriptions quietly drain money; tools that find them often want your whole inbox.</p>
+      <p><b>What I built.</b> A read-only Google OAuth flow + serverless functions + an extraction engine (90+ services) that classifies receipts and groups them by service, with tokens in encrypted, expiring cookies and no stored email. For recruiters I added a full demo mode (fictional data, no login).</p>
+      <p><b>Try it:</b> the demo opens on sample subscriptions (badged "Demo data") — expand a card, sort, open one-time payments.</p>
+      <p class="muted">React · Netlify Functions · Google/Gmail API (read-only) · encrypted cookies</p>
+    </div></details>
+  </div>
+
+  <!-- 3 Content Operator OS -->
+  <div class="card">
+    <div class="card-top">
+      <p class="pname"><span class="pnum">3 · </span>Content Operator OS</p>
+      <span class="badge b-part">Live demo · read-only</span>
+    </div>
+    <p class="prop">A full-stack operator dashboard for running multiple content accounts — source intake, a review queue, settings, analytics — backed by PostgreSQL, running here with zero config on sample data.</p>
+    <p class="skill">Proves: <b>full-stack + relational data modeling + product workflow</b></p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://content-operator-os-demo-kp.netlify.app" target="_blank" rel="noopener">Live Demo →</a>
+    </div>
+    <details><summary>Case study</summary><div class="cs">
+      <p><b>Problem.</b> Running several content accounts scatters decisions across spreadsheets — no path from idea to approved post.</p>
+      <p><b>What I built.</b> A Next.js dashboard with a 13-table schema modeling source → candidate → package → score → queue, every mutation a Server Action with Zod validation over a repository layer that runs on SQL <i>or</i> a file store. The AI generation/scoring step is a clearly-labeled scaffold, not faked.</p>
+      <p class="muted"><b>Note:</b> the hosted demo is read-only (sample data); clone & run locally for full interactivity. Next.js 15 · React 19 · Drizzle/PostgreSQL · Server Actions</p>
+    </div></details>
+  </div>
+
+  <!-- 4 KitSmith -->
+  <div class="card">
+    <div class="card-top">
+      <p class="pname"><span class="pnum">4 · </span>KitSmith</p>
+      <span class="badge b-desk">Desktop app</span>
+    </div>
+    <p class="prop">A local Windows app that turns audio you own into a producer sound kit — stems, one-shots, MIDI, analysis — fully offline. Ships as real MSI/NSIS installers.</p>
+    <p class="skill">Proves: <b>deep technical build + polyglot systems + shipping</b></p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://kitsmith-portfolio-kp.netlify.app" target="_blank" rel="noopener">Landing &amp; Download →</a>
+    </div>
+    <details><summary>Case study</summary><div class="cs">
+      <p><b>Problem.</b> Producers want stems/loops/MIDI from reference audio without uploading copyrighted material; cloud tools don't run offline.</p>
+      <p><b>What I built.</b> A Tauri + React UI talking through a Node bridge to a Python DSP worker — the bridge was the key decision for Windows reliability. SQLite job state, a swappable provider abstraction, a Playwright smoke test, and native MSI/NSIS installers (checksums on the landing page).</p>
+      <p class="muted">Tauri 2 · React/TS · Python (librosa) · Node bridge · SQLite · Rust</p>
+    </div></details>
+  </div>
+
+  <!-- 5 NightShift Manager -->
+  <div class="card">
+    <div class="card-top">
+      <p class="pname"><span class="pnum">5 · </span>NightShift Manager</p>
+      <span class="badge b-desk">CLI · landing</span>
+    </div>
+    <p class="prop">A local queue runner that executes AI coding jobs unattended and only marks one "done" when its output is objectively verified — the guardrails around an autonomous agent.</p>
+    <p class="skill">Proves: <b>automation / agentic workflow + reliability &amp; testing</b></p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://nightshift-portfolio-kp.netlify.app" target="_blank" rel="noopener">Landing &amp; Demo →</a>
+    </div>
+    <details><summary>Case study</summary><div class="cs">
+      <p><b>Problem.</b> An AI agent's process can exit "successfully" while producing nothing useful — burning time and credits.</p>
+      <p><b>What I built.</b> A PowerShell queue that runs one job at a time in a constrained sandbox, with a completion contract (verification command <b>and</b> required files), bounded repair passes, blocked-vs-failed handling, and recovery — plus a mock runner + fixtures so every path is testable with no API spend. <b>19/19 test assertions pass.</b></p>
+      <p class="muted">PowerShell · JSON state machine · Windows Task Scheduler · mock-driven tests</p>
+    </div></details>
+  </div>
+
+  <!-- 6 ShopFlow -->
+  <div class="card">
+    <div class="card-top">
+      <p class="pname"><span class="pnum">6 · </span>ShopFlow-Orchestrator</p>
+      <span class="badge b-live">Live output</span>
+    </div>
+    <p class="prop">Turns raw technician inspection shorthand into a priced repair order, an empathetic customer text, and an advisor cheat sheet — with a self-correcting resilience layer that still ships an estimate when the vendor API and AI are both offline.</p>
+    <p class="skill">Proves: <b>agentic AI orchestration + resilience engineering</b></p>
+    <div class="btns">
+      <a class="btn btn-primary" href="https://shopflow-orchestrator-kp.netlify.app" target="_blank" rel="noopener">Live Output →</a>
+    </div>
+    <details><summary>Case study</summary><div class="cs">
+      <p><b>What it is.</b> A zero-dependency Node pipeline (circuit breaker + retry + layered fallbacks + human-review queue). 30/30 tests pass; the real LLM path is optional behind an API key, with a deterministic fallback otherwise.</p>
+      <p class="muted">Node.js (zero-dep) · optional Anthropic SDK · circuit breaker + fallbacks</p>
+    </div></details>
+  </div>
+
+  <p class="foot">
+    Built with AI-assisted development · all demos use fictional sample data · no secrets or personal documents are exposed.<br>
+    📧 <a href="mailto:kuttochannel@gmail.com" style="color:var(--accent)">kuttochannel@gmail.com</a>
+  </p>
+
+</div>
+</body>
+</html>
