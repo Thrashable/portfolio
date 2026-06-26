@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f6e56">
+<title>Content Operator OS — case study · Kellen Poole</title>
+<meta name="description" content="A full-stack Next.js + PostgreSQL operator dashboard with a zero-config demo. Problem, build, STAR, and how to try it.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar"><div class="row">
+  <a class="brand" href="/">Kellen <b>Poole</b></a>
+  <a class="back" href="/">← All projects</a>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow reveal">Full-stack · relational data · workflow</p>
+    <h1 class="reveal">Content Operator OS</h1>
+    <p class="lede reveal">A full-stack operator dashboard for running multiple content accounts — intake, a review queue, settings, analytics — backed by PostgreSQL, running here with <b>zero config</b> on sample data.</p>
+    <div class="reveal"><span class="status amber"><span class="dot"></span> Live demo · read-only preview</span></div>
+    <div class="actions reveal">
+      <a class="btn btn-primary" href="https://content-operator-os-demo-kp.netlify.app" target="_blank" rel="noopener">Open live demo <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="https://github.com/Thrashable/content-operator-os" target="_blank" rel="noopener">Source code ↗</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="label">The problem</p>
+    <p class="prose">Running several content accounts scatters decisions across spreadsheets and tabs — there's <b>no single path from a raw idea to an approved-to-post item</b>.</p>
+  </section>
+
+  <section>
+    <p class="label">How it works</p>
+    <ol class="steps">
+      <li><b>A 13-table relational schema</b> models the pipeline: source item → candidate → package → score → review queue.</li>
+      <li><b>Every mutation is a Next.js Server Action</b> with Zod validation, over a repository that runs on PostgreSQL <i>or</i> a local file store.</li>
+      <li><b>Approve / reject / request-revision</b> on the queue, with per-account analytics. The AI generation + scoring step is a <b>clearly-labeled scaffold</b>, not faked.</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="label">The story · STAR</p>
+    <div class="star">
+      <div class="star-row"><div class="glyph">S</div><div><p class="k">Situation</p><p class="t">Running more than one content account means decisions get scattered, with no clean path from an idea to an approved post.</p></div></div>
+      <div class="star-row"><div class="glyph">T</div><div><p class="k">Task</p><p class="t">Build the operator's control surface as real database-backed software, not a mocked UI.</p></div></div>
+      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Designed a thirteen-table PostgreSQL schema and modeled the pipeline as source items becoming candidates, packages, scores, and queue entries. Implemented every mutation as a Server Action with Zod validation over a repository layer that tries SQL and falls back to a local store. Deliberately left generation/scoring as clearly-labeled scaffolds — and for the portfolio made the whole thing run with <b>zero config</b>.</p></div></div>
+      <div class="star-row"><div class="glyph">R</div><div><p class="k">Result</p><p class="t">The persistence and workflow are real and verified — create an account, push a source item through the pipeline, approve or reject it in the queue, with analytics reading from the store — and it builds and runs <b>with or without a database</b>.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Try it in 20 seconds</p>
+    <ol class="steps">
+      <li><b>Open the live demo</b> — it runs on fictional sample data with a "Portfolio demo" banner; <b>no database needed</b>.</li>
+      <li><b>Browse the workflow:</b> Accounts → an account → the Queue (approve/reject) → Analytics → Settings.</li>
+      <li>The hosted demo is <b>read-only</b>; clone &amp; run locally (<code>npm run dev</code>) for full write interactivity.</li>
+    </ol>
+    <div class="actions"><a class="btn btn-primary" href="https://content-operator-os-demo-kp.netlify.app" target="_blank" rel="noopener">Open live demo <span class="arr">→</span></a></div>
+  </section>
+
+  <section>
+    <p class="label">Built with</p>
+    <div class="pills"><span class="pill">Next.js 15</span><span class="pill">React 19</span><span class="pill">Drizzle ORM</span><span class="pill">PostgreSQL</span><span class="pill">Server Actions</span><span class="pill">Zod</span><span class="pill">Tailwind</span></div>
+  </section>
+
+  <section>
+    <p class="label">Status &amp; honest limitations</p>
+    <div class="callout amber">
+      <p class="prose" style="margin:0"><b>Working v1, deployed.</b> Persistence, the queue, and analytics are real; the production build runs with or without a database.</p>
+      <ul>
+        <li>Generation &amp; scoring are <b>labeled scaffolds</b> (placeholder values), not real AI; external ingestion is planned.</li>
+        <li>The hosted demo is a <b>read-only preview</b> (writes don't persist on serverless) — full interactivity is the local run.</li>
+        <li>Single-operator (no auth) by design.</li>
+      </ul>
+    </div>
+    <p class="honest" style="margin-top:14px">Self-directed project, built with AI-assisted development. All data shown is fictional sample content.</p>
+  </section>
+</div>
+
+<footer><div class="wrap">Content Operator OS · part of <a href="/">Kellen Poole's portfolio</a> · <a href="https://github.com/Thrashable/content-operator-os" target="_blank" rel="noopener">source</a></div></footer>
+</body>
+</html>

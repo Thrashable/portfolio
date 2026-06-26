@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f6e56">
+<title>Resume Shock — case study · Kellen Poole</title>
+<meta name="description" content="A privacy-first tool that turns a PDF résumé into a shareable web résumé, parsed entirely in the browser. Problem, build, STAR, and how to try it.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar"><div class="row">
+  <a class="brand" href="/">Kellen <b>Poole</b></a>
+  <a class="back" href="/">← All projects</a>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow reveal">Front-end · client-side · privacy</p>
+    <h1 class="reveal">Resume Shock</h1>
+    <p class="lede reveal">Turn a PDF résumé into a clean, shareable web résumé — parsed entirely in your browser. No account, no upload, no server.</p>
+    <div class="reveal"><span class="status"><span class="dot"></span> Live demo · running now</span></div>
+    <div class="actions reveal">
+      <a class="btn btn-primary" href="https://resume-shock-demo-kp.netlify.app" target="_blank" rel="noopener">Open live demo <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="https://github.com/Thrashable/resume-shock" target="_blank" rel="noopener">Source code ↗</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="label">The problem</p>
+    <p class="prose">A PDF résumé is hard to share attractively and slow to tailor. Most "résumé website" tools make you create an account and <b>upload your document to their servers</b> — a privacy trade-off many job seekers don't want.</p>
+  </section>
+
+  <section>
+    <p class="label">How it works</p>
+    <ol class="steps">
+      <li><b>Parse the PDF locally</b> with PDF.js — the file never leaves your machine.<span class="sub">Heuristics pull out name, contact, experience, education, skills, and projects.</span></li>
+      <li><b>Render a themed visual résumé</b> with light/dark styles.</li>
+      <li><b>Share with a link, not a server.</b> The résumé data is compressed into the URL hash, so the link <i>is</i> the résumé — browsers never send it to a server.</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="label">The story · STAR</p>
+    <div class="star">
+      <div class="star-row"><div class="glyph">S</div><div><p class="k">Situation</p><p class="t">I had a PDF résumé that was hard to share nicely, and the tools that make résumé pages all wanted an account and an upload.</p></div></div>
+      <div class="star-row"><div class="glyph">T</div><div><p class="k">Task</p><p class="t">Build a tool that turns a PDF into a shareable web résumé entirely on the user's side, so the data never leaves the browser.</p></div></div>
+      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Used PDF.js to parse in-browser and wrote heuristics to extract each section; rendered a themed résumé; and made sharing work with <b>zero backend</b> by compressing the data into the URL hash. In a polish pass I code-split the 2 MB PDF engine to cut the initial load ~54% and hardened the share button with a clipboard fallback.</p></div></div>
+      <div class="star-row"><div class="glyph">R</div><div><p class="t">A working, privacy-first app: "See Example" (or upload) → visual résumé → a share link that reconstructs the page on any machine with no server. Production build verified; initial JS bundle reduced from ~254&nbsp;KB to ~118&nbsp;KB gzip.</p><p class="k" style="margin-top:6px">Result</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Try it in 20 seconds</p>
+    <ol class="steps">
+      <li><b>Open the live demo.</b><span class="sub">resume-shock-demo-kp.netlify.app</span></li>
+      <li><b>Click "See Example"</b> — loads a fictional "Jane Smith" résumé, no upload needed.</li>
+      <li><b>Hit "Share Link"</b> — it copies a self-contained URL that rebuilds the résumé anywhere. (Or drop in your own PDF.)</li>
+    </ol>
+    <div class="actions"><a class="btn btn-primary" href="https://resume-shock-demo-kp.netlify.app" target="_blank" rel="noopener">Open live demo <span class="arr">→</span></a></div>
+  </section>
+
+  <section>
+    <p class="label">Built with</p>
+    <div class="pills"><span class="pill">React</span><span class="pill">Vite</span><span class="pill">PDF.js</span><span class="pill">lz-string</span><span class="pill">Tailwind</span><span class="pill">Framer Motion</span></div>
+  </section>
+
+  <section>
+    <p class="label">Status &amp; honest limitations</p>
+    <div class="callout">
+      <p class="prose" style="margin:0"><b>Working v1, deployed.</b> The full parse → render → share/download workflow runs in the browser.</p>
+      <ul>
+        <li>Parsing is <b>heuristic</b> — unusual layouts (multi-column, scanned PDFs) may parse imperfectly.</li>
+        <li><b>No backend by design</b> — shared data lives only in the URL hash; the sample data is fictional.</li>
+      </ul>
+    </div>
+    <p class="honest" style="margin-top:14px">Self-directed project, built with AI-assisted development. Status is accurate, not aspirational.</p>
+  </section>
+</div>
+
+<footer><div class="wrap">Resume Shock · part of <a href="/">Kellen Poole's portfolio</a> · <a href="https://github.com/Thrashable/resume-shock" target="_blank" rel="noopener">source</a></div></footer>
+</body>
+</html>

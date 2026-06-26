@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f6e56">
+<title>NightShift Manager — case study · Kellen Poole</title>
+<meta name="description" content="A local queue runner that executes AI coding jobs unattended and only marks them done when output is objectively verified. Problem, build, STAR, verified output.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar"><div class="row">
+  <a class="brand" href="/">Kellen <b>Poole</b></a>
+  <a class="back" href="/">← All projects</a>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow reveal">Automation · agentic workflow · reliability</p>
+    <h1 class="reveal">NightShift Manager</h1>
+    <p class="lede reveal">A local queue runner that executes AI coding jobs <b>unattended</b> and only marks one "done" when its output is <b>objectively verified</b> — the guardrails around an autonomous agent.</p>
+    <div class="reveal"><span class="status"><span class="dot"></span> Verified · 19/19 test assertions pass</span></div>
+    <div class="actions reveal">
+      <a class="btn btn-primary" href="#verified">See it verified <span class="arr">↓</span></a>
+      <a class="btn btn-ghost" href="https://github.com/Thrashable/nightshift-manager" target="_blank" rel="noopener">Source code ↗</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="label">The problem</p>
+    <p class="prose">Letting an AI coding agent run unattended is risky: a process can exit "successfully" while <b>producing nothing useful</b>, and you can burn hours and API credits with no guardrails. NightShift treats <i>"the process exited"</i> as not good enough.</p>
+  </section>
+
+  <section>
+    <p class="label">How it works — queue → verify → repair → done</p>
+    <ol class="steps">
+      <li><b>Run one job at a time</b> in a constrained sandbox (<code>codex exec --sandbox workspace-write --ask-for-approval never</code>).</li>
+      <li><b>The completion contract:</b> a job passes only when a verification <i>command</i> succeeds <b>and</b> the <i>required files</i> it should have produced actually exist.</li>
+      <li><b>On failure, bounded repair passes.</b> A human-only blocker (e.g. missing credentials) is marked <b>blocked</b>, not failed. Locking, crash recovery, atomic writes, and reports throughout.</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="label">The story · STAR</p>
+    <div class="star">
+      <div class="star-row"><div class="glyph">S</div><div><p class="k">Situation</p><p class="t">I was using an AI coding agent for unattended work and realized I couldn't trust "the process finished" as proof it actually did the job — it's easy to wake up to wasted time and credits.</p></div></div>
+      <div class="star-row"><div class="glyph">T</div><div><p class="k">Task</p><p class="t">Build a local manager that runs AI coding jobs overnight but only marks them done when the output is objectively verified, and fails safely otherwise.</p></div></div>
+      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Built a PowerShell queue that runs one job at a time in a constrained sandbox. The key decision was the completion contract: a job passes only if a verification command succeeds <b>and</b> the required files exist. On failure it runs bounded repair passes; human-only blockers are marked blocked, not failed. I added locking, recovery, scheduling, and reporting, and — to avoid spending real credits testing — wrote a mock runner and a fixture suite with 19 passing assertions.</p></div></div>
+      <div class="star-row"><div class="glyph">R</div><div><p class="k">Result</p><p class="t">The manager works against the mock runner with all tests green and correctly refuses to mark a failed job "done." It demonstrates that I think about reliability and safety around AI tools, not just prompting them.</p></div></div>
+    </div>
+  </section>
+
+  <section id="verified">
+    <p class="label">Verified — actual test output (no API spend)</p>
+    <div class="term">
+<span class="m">PS&gt;</span> <span class="g">.\validate-setup.ps1</span><br>NightShift setup validation <b>passed.</b><br><br>
+<span class="m">PS&gt;</span> <span class="g">.\tests\run-manager-tests.ps1</span><br>[test] lock prevention · state recovery · atomic queue write · repair · blocker · …<br>Manager tests <b>passed: 19 assertions.</b><br><br>
+<span class="m">PS&gt;</span> <span class="g">.\run-nightshift.ps1 -DryRun</span><br>Dry run: queue is <b>valid.</b> No jobs are eligible right now.</div>
+    <p class="prose muted" style="margin-top:12px">The 19 assertions cover queue validation, dry run, locking, recovery, success, failure, repair, blocker handling, required files, paths with spaces, and reset — all against a <b>mock</b> Codex runner, so the whole system is testable with zero API spend.</p>
+  </section>
+
+  <section>
+    <p class="label">Built with</p>
+    <div class="pills"><span class="pill">PowerShell module</span><span class="pill">JSON state machine</span><span class="pill">Windows Task Scheduler</span><span class="pill">mock-driven tests</span><span class="pill">sandboxed codex exec</span></div>
+  </section>
+
+  <section>
+    <p class="label">Status &amp; honest limitations</p>
+    <div class="callout">
+      <p class="prose" style="margin:0"><b>Implemented &amp; tested.</b> The full queue / verify / repair / recover / report engine passes 19 mock-based assertions.</p>
+      <ul>
+        <li>A real, <b>paid Codex run was intentionally not executed</b>; confirm <code>codex login</code> before unattended real-project use.</li>
+        <li>Windows-only; CLI (no GUI). A short dry-run screen recording is a planned addition.</li>
+      </ul>
+    </div>
+    <p class="honest" style="margin-top:14px">Self-directed project, built with AI-assisted development. <i>"I don't just use AI tools — I built the guardrails."</i></p>
+  </section>
+</div>
+
+<footer><div class="wrap">NightShift Manager · part of <a href="/">Kellen Poole's portfolio</a> · <a href="https://github.com/Thrashable/nightshift-manager" target="_blank" rel="noopener">source</a></div></footer>
+</body>
+</html>

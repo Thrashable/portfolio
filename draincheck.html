@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f6e56">
+<title>DrainCheck — case study · Kellen Poole</title>
+<meta name="description" content="A privacy-first app using read-only Gmail to find recurring subscriptions and monthly spend, with a no-login demo. Problem, build, STAR, and how to try it.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar"><div class="row">
+  <a class="brand" href="/">Kellen <b>Poole</b></a>
+  <a class="back" href="/">← All projects</a>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow reveal">Integration · OAuth · serverless</p>
+    <h1 class="reveal">DrainCheck</h1>
+    <p class="lede reveal">See what's draining your wallet. A privacy-first app that uses <b>read-only</b> Gmail access to find your recurring subscriptions and total monthly spend — with a no-login demo.</p>
+    <div class="reveal"><span class="status"><span class="dot"></span> Live demo · no login required</span></div>
+    <div class="actions reveal">
+      <a class="btn btn-primary" href="https://draincheck-demo-kp.netlify.app/?demo=1" target="_blank" rel="noopener">Open live demo <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="https://github.com/Thrashable/draincheck" target="_blank" rel="noopener">Source code ↗</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="label">The problem</p>
+    <p class="prose">Subscriptions accumulate and creep, and most people have no single view of what recurs each month. The tools that promise this often ask for broad access or <b>upload your inbox to their servers</b>.</p>
+  </section>
+
+  <section>
+    <p class="label">How it works</p>
+    <ol class="steps">
+      <li><b>Read-only Google OAuth</b> (<code>gmail.readonly</code>) — DrainCheck can read, never modify or send.</li>
+      <li><b>Serverless functions search Gmail</b> for receipts/renewals; an extraction engine classifies them across 90+ known services and infers price, frequency, card, and charge history.</li>
+      <li><b>A dashboard groups</b> recurring subscriptions vs. one-time purchases, by category, with monthly totals. Tokens live in encrypted, expiring cookies; <b>no email is stored</b>.</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="label">The story · STAR</p>
+    <div class="star">
+      <div class="star-row"><div class="glyph">S</div><div><p class="k">Situation</p><p class="t">Forgotten subscriptions quietly drain money, and the tools that find them often want to upload your whole inbox.</p></div></div>
+      <div class="star-row"><div class="glyph">T</div><div><p class="k">Task</p><p class="t">Build a tool that surfaces recurring charges from Gmail while touching as little data as possible.</p></div></div>
+      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Chose Google's read-only scope on purpose, built the OAuth flow and serverless functions, and wrote an extraction engine that classifies receipts and groups them by service to infer price, recurrence, and charge history — keeping tokens in encrypted, expiring cookies with <b>no stored email</b>. Then added a full demo mode so anyone can explore with fictional data and no login.</p></div></div>
+      <div class="star-row"><div class="glyph">R</div><div><p class="k">Result</p><p class="t">A working, privacy-first app with a real OAuth/Gmail pipeline and a public demo. The dashboard renders categorized monthly spend; the demo (fictional data) is verified in the production build.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">Try it in 20 seconds</p>
+    <ol class="steps">
+      <li><b>Open the demo</b> — it loads on sample subscriptions, clearly badged "Demo data."<span class="sub">No Google account, no inbox access.</span></li>
+      <li><b>Expand a subscription card</b> to see status, card, and charge history.</li>
+      <li><b>Sort</b> by price, filter by category, and open the <b>One-Time Payments</b> section.</li>
+    </ol>
+    <div class="actions"><a class="btn btn-primary" href="https://draincheck-demo-kp.netlify.app/?demo=1" target="_blank" rel="noopener">Open live demo <span class="arr">→</span></a></div>
+  </section>
+
+  <section>
+    <p class="label">Built with</p>
+    <div class="pills"><span class="pill">React</span><span class="pill">Netlify Functions</span><span class="pill">Google / Gmail API</span><span class="pill">read-only scope</span><span class="pill">encrypted cookies</span><span class="pill">Tailwind</span></div>
+  </section>
+
+  <section>
+    <p class="label">Status &amp; honest limitations</p>
+    <div class="callout">
+      <p class="prose" style="margin:0"><b>Working v1, deployed.</b> Real OAuth + extraction engine implemented; a public demo mode makes it explorable with no account.</p>
+      <ul>
+        <li>The real Google sign-in shows an <b>"unverified app"</b> consent screen until the OAuth app is verified (expected for a personal project).</li>
+        <li>Extraction is <b>heuristic</b> (dictionary + regex); unusual receipt formats may be missed.</li>
+        <li>The live Gmail flow needs your own Google credentials — verified by code review, not exercised in the demo.</li>
+      </ul>
+    </div>
+    <p class="honest" style="margin-top:14px">Self-directed project, built with AI-assisted development. Demo data is fictional.</p>
+  </section>
+</div>
+
+<footer><div class="wrap">DrainCheck · part of <a href="/">Kellen Poole's portfolio</a> · <a href="https://github.com/Thrashable/draincheck" target="_blank" rel="noopener">source</a></div></footer>
+</body>
+</html>

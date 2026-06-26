@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0f6e56">
+<title>ShopFlow-Orchestrator — case study · Kellen Poole</title>
+<meta name="description" content="A resilient AI pipeline turning technician notes into priced repair orders + customer messaging, with self-correcting fallbacks. Problem, build, STAR, live output.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Spline+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="topbar"><div class="row">
+  <a class="brand" href="/">Kellen <b>Poole</b></a>
+  <a class="back" href="/">← All projects</a>
+</div></div>
+
+<div class="wrap">
+  <header class="hero">
+    <p class="eyebrow reveal">Agentic AI · resilience engineering</p>
+    <h1 class="reveal">ShopFlow-Orchestrator</h1>
+    <p class="lede reveal">Turns raw technician inspection shorthand into a priced repair order, an empathetic customer text, and an advisor cheat sheet — with a self-correcting resilience layer that still ships an estimate when the vendor API and the AI are both offline.</p>
+    <div class="reveal"><span class="status"><span class="dot"></span> Live output · 30/30 tests pass</span></div>
+    <div class="actions reveal">
+      <a class="btn btn-primary" href="https://shopflow-orchestrator-kp.netlify.app" target="_blank" rel="noopener">See live output <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="https://github.com/Thrashable/shopflow-orchestrator" target="_blank" rel="noopener">Source code ↗</a>
+    </div>
+  </header>
+
+  <section>
+    <p class="label">The problem</p>
+    <p class="prose">There's a bottleneck between a technician finishing an inspection and a customer approving repairs: terse shorthand has to become a <b>priced, clear, empathetic</b> set of outputs — and it has to keep working when a parts-vendor API or the AI is down.</p>
+  </section>
+
+  <section>
+    <p class="label">How it works</p>
+    <ol class="steps">
+      <li><b>Parse</b> technician shorthand (e.g. <i>"front lower CA bushings torn, play in ball joint, rack &amp; pinion weeping"</i>) into structured repair items.</li>
+      <li><b>Price</b> each item — parts, labor, and margin — via an underwriting layer.</li>
+      <li><b>Produce three outputs:</b> a customer SMS/web notification in plain English, an internal priced repair order, and an advisor cheat sheet with talking points and objection handling.</li>
+    </ol>
+  </section>
+
+  <section>
+    <p class="label">The story · STAR</p>
+    <div class="star">
+      <div class="star-row"><div class="glyph">S</div><div><p class="k">Situation</p><p class="t">The gap between a technician finishing an inspection and a customer approving repairs is messy — shorthand has to become priced, empathetic outputs, and it has to survive a vendor API or AI outage.</p></div></div>
+      <div class="star-row"><div class="glyph">T</div><div><p class="k">Task</p><p class="t">Build a pipeline that converts technician notes into customer-ready summaries, advisor talking points, and a priced order — with autonomous self-correction.</p></div></div>
+      <div class="star-row"><div class="glyph">A</div><div><p class="k">Action</p><p class="t">Built a zero-dependency Node pipeline (five stages) with a circuit breaker, exponential backoff, an emergency-pricing matrix, and layered fallbacks. The LLM path is optional behind an API key, with a deterministic domain simulation otherwise. Added a human-review queue for degraded runs and 30 tests with fault injection.</p></div></div>
+      <div class="star-row"><div class="glyph">R</div><div><p class="k">Result</p><p class="t">A fully runnable, tested system (30/30 tests). Even with the parts vendor <b>down</b> and the AI <b>offline</b>, it falls back to emergency pricing + template copy and still ships a complete estimate — auto-flagged for human review.</p></div></div>
+    </div>
+  </section>
+
+  <section>
+    <p class="label">See it</p>
+    <p class="prose muted" style="margin-bottom:12px">The live page renders a real run end-to-end — the customer text, the itemized estimate, the internal repair order, the advisor cheat sheet, and the degraded-mode resilience demo.</p>
+    <div class="actions"><a class="btn btn-primary" href="https://shopflow-orchestrator-kp.netlify.app" target="_blank" rel="noopener">See live output <span class="arr">→</span></a></div>
+  </section>
+
+  <section>
+    <p class="label">Built with</p>
+    <div class="pills"><span class="pill">Node.js (zero-dep)</span><span class="pill">circuit breaker + fallbacks</span><span class="pill">optional Anthropic SDK</span><span class="pill">node:test · 30 tests</span></div>
+  </section>
+
+  <section>
+    <p class="label">Status &amp; honest limitations</p>
+    <div class="callout">
+      <p class="prose" style="margin:0"><b>Fully runnable &amp; tested</b> (30/30). Zero external production dependencies.</p>
+      <ul>
+        <li>The real LLM path is optional behind an API key; without it, a deterministic domain simulation runs.</li>
+        <li>A personal proof-of-concept — not deployed in a real shop.</li>
+      </ul>
+    </div>
+    <p class="honest" style="margin-top:14px">Self-directed project, built with AI-assisted development. All figures shown are illustrative.</p>
+  </section>
+</div>
+
+<footer><div class="wrap">ShopFlow-Orchestrator · part of <a href="/">Kellen Poole's portfolio</a> · <a href="https://github.com/Thrashable/shopflow-orchestrator" target="_blank" rel="noopener">source</a></div></footer>
+</body>
+</html>
